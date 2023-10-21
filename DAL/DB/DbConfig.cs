@@ -8,10 +8,11 @@ public class DbConfig
     public string Username { get; set; }
     public string Password { get; set; }
     public string Database { get; set; }
+    public string Scheme { get; set; }
 
     public override string ToString()
     {
-        return $"Host={Host};Username={Username};Password={Password}s;Database={Database}";
+        return $"Host={Host};Username={Username};Password={Password};Database={Database};Pooling=true;SearchPath={Scheme};";
     }
 
     public static DbConfig? Import(string path = "db_config.json")
