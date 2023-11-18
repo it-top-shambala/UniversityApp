@@ -12,7 +12,7 @@ public class University
         _context = context;
         
         _context.ImportTeachers();
-        _context.ImportStudents();
+        //_context.ImportStudents();
     }
 
     #region Teachers

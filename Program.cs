@@ -2,23 +2,17 @@
 using UniversityApp.DAL;
 using UniversityApp.VL;
 
-var university = new University(new JsonContext("teachers.json", "students.json"));
+//var university = new University(new JsonContext("teachers.json", "students.json"));
 
+var conn = "Server=127.0.0.1;User Id=postgres;Password=1234;Port=5432;Database=university_db;SearchPath=test;";
+var university = new University(new DataBaseContext(conn));
 var teachers = university.GetAllTeachers();
-UniversityView.ShowTeachers(teachers);
-
-var name = CLI.InputString("Введите имя преподавателя для поиска: ");
-var listOfTeachers = university.FindTeachersByName(name);
-UniversityView.ShowTeachers(listOfTeachers);
-
-/*
-var students = university.GetAllStudents();
-foreach (var s in students)
+foreach (var teacher in teachers)
 {
-    Console.WriteLine($"{s.Id}: {s.FullName}, {s.Faculty}, {s.Age}, {s.Sex}");
-    foreach (var m in s.Marks)
+    Console.Write($"{teacher.Id}: {teacher.FullName}, {teacher.Age} -> {teacher.Faculty}: ");
+    foreach (var subject in teacher.Subjects)
     {
-        Console.WriteLine($"\t{m.Id} ({m.Date:d}) -> {m.Subject}, {m.Teacher.FullName} -> {m.Rating}");
+        Console.Write($"{subject}, ");
     }
+    Console.WriteLine();
 }
-*/

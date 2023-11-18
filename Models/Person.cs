@@ -4,7 +4,7 @@ namespace UniversityApp.Models;
 
 public record Person
 {
-    public Guid Id { get; init; }
+    public int Id { get; init; }
     public string LastName { get; init; }
     public string FirstName { get; init; }
     public string? Patronymic { get; init; }
@@ -25,6 +25,4 @@ public record Person
             return age;
         }
     }
-
-    public Sex Sex { get; init; }
 };
